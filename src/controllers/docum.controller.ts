@@ -36,6 +36,18 @@ export class DocumController {
     description: 'Docu model instance',
     content: {'application/json': {schema: getModelSchemaRef(Docu)}},
   })
+  
+  
+  /*
+  I want to upload file to the database but unable to
+  connect my file upload to the Database
+  Means how can I coonect uploader to data base with
+  colum name which I am provided in Database
+  And how can I give foreign key for that
+*/
+
+/*File Uploader Code Start here*/
+
 
   async fileUpload(
     @requestBody.file()
@@ -75,7 +87,7 @@ export class DocumController {
     return {files, fields: request.body};
   }
 
-
+/*File Uploader Code End here*/
 
 
   async create(
