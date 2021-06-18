@@ -37,20 +37,20 @@ export class DocumController {
     content: {'application/json': {schema: getModelSchemaRef(Docu)}},
   })
 
-  async fileUpload(
-    @requestBody.file()
-    request: Request,
-    @inject(RestBindings.Http.RESPONSE) response: Response,
-  ): Promise<object> {
-    return new Promise<object>((resolve, reject) => {
-      this.handler(request, response, (err: unknown) => {
-        if (err) reject(err);
-        else {
-          resolve(DocumController.getFilesAndFields(request));
-        }
-      });
-    });
-  }
+  // async fileUpload(
+  //   @requestBody.file()
+  //   request: Request,
+  //   @inject(RestBindings.Http.RESPONSE) response: Response,
+  // ): Promise<object> {
+  //   return new Promise<object>((resolve, reject) => {
+  //     this.handler(request, response, (err: unknown) => {
+  //       if (err) reject(err);
+  //       else {
+  //         resolve(DocumController.getFilesAndFields(request));
+  //       }
+  //     });
+  //   });
+  // }
 
   // /**
   //  * Get files and fields for the request
