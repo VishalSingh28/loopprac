@@ -1,0 +1,1730 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "trysome",
+    "version": "0.0.1",
+    "description": "fileupload checking",
+    "contact": {
+      "name": "VishalSingh28",
+      "email": "visusingh009@gmail.com"
+    }
+  },
+  "paths": {
+    "/docus/count": {
+      "get": {
+        "x-controller-name": "DocumController",
+        "x-operation-name": "count",
+        "tags": [
+          "DocumController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Docu model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Docu.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Docu>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DocumController.count"
+      }
+    },
+    "/docus/{id}/user-data": {
+      "get": {
+        "x-controller-name": "DocuUserDataController",
+        "x-operation-name": "getUserData",
+        "tags": [
+          "DocuUserDataController"
+        ],
+        "responses": {
+          "200": {
+            "description": "UserData belonging to Docu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserData"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DocuUserDataController.getUserData"
+      }
+    },
+    "/docus/{id}": {
+      "put": {
+        "x-controller-name": "DocumController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "DocumController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Docu PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Docu"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DocumController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "DocumController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "DocumController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Docu PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocuPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DocumController.updateById"
+      },
+      "get": {
+        "x-controller-name": "DocumController",
+        "x-operation-name": "findById",
+        "tags": [
+          "DocumController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Docu model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DocuWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Docu.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DocumController.findById"
+      },
+      "delete": {
+        "x-controller-name": "DocumController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "DocumController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "Docu DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DocumController.deleteById"
+      }
+    },
+    "/docus": {
+      "post": {
+        "x-controller-name": "DocumController",
+        "x-operation-name": "create",
+        "tags": [
+          "DocumController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Docu model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Docu"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDocu"
+              }
+            }
+          }
+        },
+        "operationId": "DocumController.create"
+      },
+      "patch": {
+        "x-controller-name": "DocumController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "DocumController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Docu PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Docu.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Docu>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocuPartial"
+              }
+            }
+          }
+        },
+        "operationId": "DocumController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "DocumController",
+        "x-operation-name": "find",
+        "tags": [
+          "DocumController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Docu model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DocuWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Docu.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DocumController.find"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    },
+    "/user-data/count": {
+      "get": {
+        "x-controller-name": "UserDaController",
+        "x-operation-name": "count",
+        "tags": [
+          "UserDaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "UserData model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "UserData.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<UserData>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "UserDaController.count"
+      }
+    },
+    "/user-data/{id}/docus": {
+      "post": {
+        "x-controller-name": "UserDataDocuController",
+        "x-operation-name": "create",
+        "tags": [
+          "UserDataDocuController"
+        ],
+        "responses": {
+          "200": {
+            "description": "UserData model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Docu"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDocuInUserData"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "UserDataDocuController.create"
+      },
+      "patch": {
+        "x-controller-name": "UserDataDocuController",
+        "x-operation-name": "patch",
+        "tags": [
+          "UserDataDocuController"
+        ],
+        "responses": {
+          "200": {
+            "description": "UserData.Docu PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Docu.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Docu>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocuPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "UserDataDocuController.patch"
+      },
+      "get": {
+        "x-controller-name": "UserDataDocuController",
+        "x-operation-name": "find",
+        "tags": [
+          "UserDataDocuController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of UserData has many Docu",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Docu"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "UserDataDocuController.find"
+      },
+      "delete": {
+        "x-controller-name": "UserDataDocuController",
+        "x-operation-name": "delete",
+        "tags": [
+          "UserDataDocuController"
+        ],
+        "responses": {
+          "200": {
+            "description": "UserData.Docu DELETE success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "Docu.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<Docu>"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "UserDataDocuController.delete"
+      }
+    },
+    "/user-data/{id}": {
+      "put": {
+        "x-controller-name": "UserDaController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "UserDaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "UserData PUT success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserData"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "UserDaController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "UserDaController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "UserDaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "UserData PATCH success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDataPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "UserDaController.updateById"
+      },
+      "get": {
+        "x-controller-name": "UserDaController",
+        "x-operation-name": "findById",
+        "tags": [
+          "UserDaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "UserData model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDataWithRelations"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserData.Filter"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "UserDaController.findById"
+      },
+      "delete": {
+        "x-controller-name": "UserDaController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "UserDaController"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "description": "UserData DELETE success"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "UserDaController.deleteById"
+      }
+    },
+    "/user-data": {
+      "post": {
+        "x-controller-name": "UserDaController",
+        "x-operation-name": "create",
+        "tags": [
+          "UserDaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "UserData model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserData"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUserData"
+              }
+            }
+          }
+        },
+        "operationId": "UserDaController.create"
+      },
+      "patch": {
+        "x-controller-name": "UserDaController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "UserDaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "UserData PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/loopback.Count"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "title": "UserData.WhereFilter",
+                  "additionalProperties": true,
+                  "x-typescript-type": "@loopback/repository#Where<UserData>"
+                }
+              }
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserDataPartial"
+              }
+            }
+          }
+        },
+        "operationId": "UserDaController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "UserDaController",
+        "x-operation-name": "find",
+        "tags": [
+          "UserDaController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of UserData model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserDataWithRelations"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserData.Filter1"
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "UserDaController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "UserData": {
+        "title": "UserData",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "F_Name": {
+            "type": "string"
+          },
+          "l_Name": {
+            "type": "string"
+          },
+          "father_Name": {
+            "type": "string"
+          },
+          "mother_name": {
+            "type": "string"
+          },
+          "cast": {
+            "type": "string"
+          },
+          "course": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "mobile": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "F_Name",
+          "l_Name",
+          "father_Name",
+          "mother_name",
+          "cast",
+          "course",
+          "gender",
+          "mobile"
+        ],
+        "additionalProperties": false
+      },
+      "Docu": {
+        "title": "Docu",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "degree": {
+            "type": "string"
+          },
+          "userDataId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "profile",
+          "degree"
+        ],
+        "additionalProperties": false
+      },
+      "NewDocu": {
+        "title": "NewDocu",
+        "type": "object",
+        "description": "(tsType: Omit<Docu, 'id'>, schemaOptions: { title: 'NewDocu', exclude: [ 'id' ] })",
+        "properties": {
+          "profile": {
+            "type": "string"
+          },
+          "degree": {
+            "type": "string"
+          },
+          "userDataId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "profile",
+          "degree"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<Docu, 'id'>"
+      },
+      "UserDataWithRelations": {
+        "title": "UserDataWithRelations",
+        "type": "object",
+        "description": "(tsType: UserDataWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "F_Name": {
+            "type": "string"
+          },
+          "l_Name": {
+            "type": "string"
+          },
+          "father_Name": {
+            "type": "string"
+          },
+          "mother_name": {
+            "type": "string"
+          },
+          "cast": {
+            "type": "string"
+          },
+          "course": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "mobile": {
+            "type": "number"
+          },
+          "docus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DocuWithRelations"
+            }
+          }
+        },
+        "required": [
+          "F_Name",
+          "l_Name",
+          "father_Name",
+          "mother_name",
+          "cast",
+          "course",
+          "gender",
+          "mobile"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "UserDataWithRelations"
+      },
+      "DocuWithRelations": {
+        "title": "DocuWithRelations",
+        "type": "object",
+        "description": "(tsType: DocuWithRelations, schemaOptions: { includeRelations: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "degree": {
+            "type": "string"
+          },
+          "userDataId": {
+            "type": "number"
+          },
+          "userData": {
+            "$ref": "#/components/schemas/UserDataWithRelations"
+          }
+        },
+        "required": [
+          "profile",
+          "degree"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "DocuWithRelations"
+      },
+      "DocuPartial": {
+        "title": "DocuPartial",
+        "type": "object",
+        "description": "(tsType: Partial<Docu>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "profile": {
+            "type": "string"
+          },
+          "degree": {
+            "type": "string"
+          },
+          "userDataId": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<Docu>"
+      },
+      "NewUserData": {
+        "title": "NewUserData",
+        "type": "object",
+        "description": "(tsType: Omit<UserData, 'id'>, schemaOptions: { title: 'NewUserData', exclude: [ 'id' ] })",
+        "properties": {
+          "F_Name": {
+            "type": "string"
+          },
+          "l_Name": {
+            "type": "string"
+          },
+          "father_Name": {
+            "type": "string"
+          },
+          "mother_name": {
+            "type": "string"
+          },
+          "cast": {
+            "type": "string"
+          },
+          "course": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "mobile": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "F_Name",
+          "l_Name",
+          "father_Name",
+          "mother_name",
+          "cast",
+          "course",
+          "gender",
+          "mobile"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "Omit<UserData, 'id'>"
+      },
+      "UserDataPartial": {
+        "title": "UserDataPartial",
+        "type": "object",
+        "description": "(tsType: Partial<UserData>, schemaOptions: { partial: true })",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "F_Name": {
+            "type": "string"
+          },
+          "l_Name": {
+            "type": "string"
+          },
+          "father_Name": {
+            "type": "string"
+          },
+          "mother_name": {
+            "type": "string"
+          },
+          "cast": {
+            "type": "string"
+          },
+          "course": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "mobile": {
+            "type": "number"
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "Partial<UserData>"
+      },
+      "NewDocuInUserData": {
+        "title": "NewDocuInUserData",
+        "type": "object",
+        "description": "(tsType: @loopback/repository-json-schema#Optional<Omit<Docu, 'id'>, 'userDataId'>, schemaOptions: { title: 'NewDocuInUserData', exclude: [ 'id' ], optional: [ 'userDataId' ] })",
+        "properties": {
+          "profile": {
+            "type": "string"
+          },
+          "degree": {
+            "type": "string"
+          },
+          "userDataId": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "profile",
+          "degree"
+        ],
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository-json-schema#Optional<Omit<Docu, 'id'>, 'userDataId'>"
+      },
+      "loopback.Count": {
+        "type": "object",
+        "title": "loopback.Count",
+        "x-typescript-type": "@loopback/repository#Count",
+        "properties": {
+          "count": {
+            "type": "number"
+          }
+        }
+      },
+      "Docu.ScopeFilter": {
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "Docu.ScopeFilter"
+      },
+      "Docu.IncludeFilter.Items": {
+        "title": "Docu.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/Docu.ScopeFilter"
+          }
+        }
+      },
+      "Docu.Filter": {
+        "type": "object",
+        "title": "Docu.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "profile": {
+                    "type": "boolean"
+                  },
+                  "degree": {
+                    "type": "boolean"
+                  },
+                  "userDataId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "profile",
+                    "degree",
+                    "userDataId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Docu.Fields"
+          },
+          "include": {
+            "title": "Docu.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Docu.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Docu>"
+      },
+      "Docu.Filter1": {
+        "type": "object",
+        "title": "Docu.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "Docu.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "profile": {
+                    "type": "boolean"
+                  },
+                  "degree": {
+                    "type": "boolean"
+                  },
+                  "userDataId": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "profile",
+                    "degree",
+                    "userDataId"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "Docu.Fields"
+          },
+          "include": {
+            "title": "Docu.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/Docu.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<Docu>"
+      },
+      "PingResponse": {
+        "type": "object",
+        "title": "PingResponse",
+        "properties": {
+          "greeting": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "Content-Type": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      },
+      "UserData.ScopeFilter": {
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {},
+                "additionalProperties": true
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            ]
+          },
+          "include": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": false,
+        "title": "UserData.ScopeFilter"
+      },
+      "UserData.IncludeFilter.Items": {
+        "title": "UserData.IncludeFilter.Items",
+        "type": "object",
+        "properties": {
+          "relation": {
+            "type": "string"
+          },
+          "scope": {
+            "$ref": "#/components/schemas/UserData.ScopeFilter"
+          }
+        }
+      },
+      "UserData.Filter": {
+        "type": "object",
+        "title": "UserData.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "F_Name": {
+                    "type": "boolean"
+                  },
+                  "l_Name": {
+                    "type": "boolean"
+                  },
+                  "father_Name": {
+                    "type": "boolean"
+                  },
+                  "mother_name": {
+                    "type": "boolean"
+                  },
+                  "cast": {
+                    "type": "boolean"
+                  },
+                  "course": {
+                    "type": "boolean"
+                  },
+                  "gender": {
+                    "type": "boolean"
+                  },
+                  "mobile": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "F_Name",
+                    "l_Name",
+                    "father_Name",
+                    "mother_name",
+                    "cast",
+                    "course",
+                    "gender",
+                    "mobile"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "UserData.Fields"
+          },
+          "include": {
+            "title": "UserData.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/UserData.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<UserData>"
+      },
+      "UserData.Filter1": {
+        "type": "object",
+        "title": "UserData.Filter",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "example": 100
+          },
+          "skip": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "order": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            ]
+          },
+          "where": {
+            "title": "UserData.WhereFilter",
+            "type": "object",
+            "additionalProperties": true
+          },
+          "fields": {
+            "oneOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "boolean"
+                  },
+                  "F_Name": {
+                    "type": "boolean"
+                  },
+                  "l_Name": {
+                    "type": "boolean"
+                  },
+                  "father_Name": {
+                    "type": "boolean"
+                  },
+                  "mother_name": {
+                    "type": "boolean"
+                  },
+                  "cast": {
+                    "type": "boolean"
+                  },
+                  "course": {
+                    "type": "boolean"
+                  },
+                  "gender": {
+                    "type": "boolean"
+                  },
+                  "mobile": {
+                    "type": "boolean"
+                  }
+                },
+                "additionalProperties": false
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [
+                    "id",
+                    "F_Name",
+                    "l_Name",
+                    "father_Name",
+                    "mother_name",
+                    "cast",
+                    "course",
+                    "gender",
+                    "mobile"
+                  ],
+                  "example": "id"
+                },
+                "uniqueItems": true
+              }
+            ],
+            "title": "UserData.Fields"
+          },
+          "include": {
+            "title": "UserData.IncludeFilter",
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "$ref": "#/components/schemas/UserData.IncludeFilter.Items"
+                },
+                {
+                  "type": "string"
+                }
+              ]
+            }
+          }
+        },
+        "additionalProperties": false,
+        "x-typescript-type": "@loopback/repository#Filter<UserData>"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+
+Model 1 Text Id(Application Id)
+
+First Name
+Last Name 
+
+Model 2 FileUploadandDownload ()
+Profile
+Cast 
+Degree
+Id Proof
+
+
+Text Controller Enable applicationId generated and send it as response
+after submit
+
+UI use Application id to upload file
+
+
+
